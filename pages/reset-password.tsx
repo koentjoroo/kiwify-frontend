@@ -7,16 +7,13 @@ import Link from "next/link";
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
 
-const schema = yup
-  .object({
-    email: yup.string().email().required(),
-    password: yup.string().required(),
-  })
-  .required();
+const schema = yup.object({
+  email: yup.string().email().required(),
+});
 
 type Inputs = yup.InferType<typeof schema>;
 
-export default function Login() {
+export default function ResetPassword() {
   const {
     register,
     handleSubmit,
@@ -25,11 +22,10 @@ export default function Login() {
   const onSubmit: SubmitHandler<Inputs> = (data, e) => console.log(data);
   const onError: SubmitErrorHandler<Inputs> = (errors, e) =>
     console.log(errors);
-
   return (
     <>
       <Head>
-        <title>Login - Kiwify</title>
+        <title>Reset Password - Kiwify</title>
         <meta name="description" content="Login to Kiwify" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -43,16 +39,10 @@ export default function Login() {
             className="mx-auto h-12 w-auto"
           />
           <h2 className="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
-            Entrar na sua conta
+            Redefinir a senha
           </h2>
           <p className="mt-2 text-center text-base leading-5 text-gray-600">
-            Ou{" "}
-            <Link
-              className="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
-              href="/signup"
-            >
-              fazer cadastro
-            </Link>
+            Você receberá um e-mail com instruções para redefinir a senha
           </p>
         </div>
         <form
@@ -87,40 +77,11 @@ export default function Login() {
               )}
             </div>
             <div className="mt-6">
-              <label
-                className="block text-sm font-medium leading-5 mb-1 text-gray-700"
-                htmlFor="password"
-              >
-                Senha
-              </label>
-              <input
-                className={cx(
-                  "block py-2 px-3 border rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5 w-full",
-                  errors.password ? "border-rose-500" : "border-gray-300"
-                )}
-                type="password"
-                {...register("password")}
-              />
-              {errors.password?.type === "required" && (
-                <div className="text-xs text-red-500 mt-1">
-                  Esse campo é obrigatório
-                </div>
-              )}
-            </div>
-            <div className="mt-2 flex items-center justify-end text-sm leading-5">
-              <Link
-                className="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
-                href="/reset-password"
-              >
-                Esqueceu a senha?
-              </Link>
-            </div>
-            <div className="mt-6">
               <button
                 className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
                 type="submit"
               >
-                Entrar
+                Redefinir senha
               </button>
             </div>
           </div>

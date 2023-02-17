@@ -1,11 +1,11 @@
+import logo from "@/public/images/kiwify-green-logo.png";
+import { yupResolver } from "@hookform/resolvers/yup";
 import cx from "clsx";
 import Head from "next/head";
 import Image from "next/image";
-import logo from "@/public/images/kiwify-green-logo.png";
-import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import Link from "next/link";
+import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
+import * as yup from "yup";
 
 const schema = yup
   .object({
